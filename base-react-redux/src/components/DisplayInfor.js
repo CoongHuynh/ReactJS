@@ -14,9 +14,7 @@ class DisplayInfor extends React.Component {
 
     return (
       <div className="display-infor-container">
-        <div className="img">
-          <img src={logo} />
-        </div>
+        <div className="img">{/* <img src={logo} /> */}</div>
         <div>
           <span
             onClick={() => {
@@ -33,10 +31,18 @@ class DisplayInfor extends React.Component {
             {listUsers.map((user) => {
               return (
                 <div key={user.id} className={+user.age > 18 ? "green" : "red"}>
-                  <div style={{ color: "yellow", paddingTop: "50px" }}>
-                    My name {user.name}
-                  </div>
+                  <div>My name {user.name}</div>
                   <div>My age: {user.age}</div>
+                  <div>
+                    <button
+                      onClick={() => {
+                        this.props.handleDeleteUser(user.id);
+                      }}
+                    >
+                      {" "}
+                      Delete
+                    </button>
+                  </div>
                   <hr />
                 </div>
               );
