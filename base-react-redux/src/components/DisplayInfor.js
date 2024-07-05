@@ -1,5 +1,6 @@
 import React from "react";
 import "./DisplayInfor.scss";
+import logo from "../logo.svg";
 class DisplayInfor extends React.Component {
   state = { isShowListUser: true };
 
@@ -13,6 +14,9 @@ class DisplayInfor extends React.Component {
 
     return (
       <div className="display-infor-container">
+        <div className="img">
+          <img src={logo} />
+        </div>
         <div>
           <span
             onClick={() => {
@@ -25,7 +29,7 @@ class DisplayInfor extends React.Component {
           </span>
         </div>
         {this.state.isShowListUser && (
-          <div>
+          <>
             {listUsers.map((user) => {
               return (
                 <div key={user.id} className={+user.age > 18 ? "green" : "red"}>
@@ -37,7 +41,7 @@ class DisplayInfor extends React.Component {
                 </div>
               );
             })}
-          </div>
+          </>
         )}
       </div>
     );
