@@ -2,7 +2,29 @@ import React from "react";
 import "./DisplayInfor.scss";
 import logo from "../logo.svg";
 class DisplayInfor extends React.Component {
-  state = { isShowListUser: true };
+  constructor(props) {
+    console.log(">>> Call contrustor: 1");
+    super(props);
+    //babal compiler
+    this.state = { isShowListUser: true };
+  }
+
+  componentDidMount() {
+    console.log(">>> Call me component did mount");
+    setTimeout(() => {
+      document.title = "Eric && Hỏi dân IT";
+    }, 3000);
+  }
+
+  componentDidUpdate(preProps, preState, snapshot) {
+    console.log(">>> Call me component did update");
+    if (this.props.listUsers !== preProps.listUsers) {
+      console.log(">>1", this.props.listUsers.length);
+      if (this.props.listUsers.length === 5) {
+        alert("You got 5 users");
+      }
+    }
+  }
 
   handleShowHide = () => {
     this.setState({ isShowListUser: !this.state.isShowListUser });
@@ -10,6 +32,7 @@ class DisplayInfor extends React.Component {
 
   // destructuring array/object
   render() {
+    console.log(">>> Cal me render");
     const { listUsers } = this.props;
 
     return (
