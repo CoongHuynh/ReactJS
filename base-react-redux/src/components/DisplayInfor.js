@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./DisplayInfor.scss";
-import logo from "../logo.svg";
 
 //stateless tức không có state thì có thể sài funtion component
 //statefull: khi funtion cần kiểm soát data (có state) thì cần sử dụng class component
@@ -14,6 +13,20 @@ const DisplayInfor = (props) => {
     setShowHideListUser(!isShowHideListuser);
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      document.title = "Eric && Hoi dan IT";
+    }, 3000);
+  }, []);
+
+  useEffect(() => {
+    if (listUsers.length === 0) {
+      alert("You delete all user");
+    }
+    console.log(">>> Call me useEffect");
+  }, [listUsers]);
+
+  console.log("call me render");
   return (
     <div className="display-infor-container">
       <div>
